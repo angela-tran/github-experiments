@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+  release:
+    types: [published]
+
+env:
+  DEPLOYMENT_ENVIRONMENT: ${{ github.event_name != 'release' && github.ref_name || github.event.release.prerelease && 'test' || 'prod' }}
 
 jobs:
   call-reusable-workflow:
