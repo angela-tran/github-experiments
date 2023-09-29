@@ -15,7 +15,7 @@ jobs:
   build:
     needs: [call-reusable-workflow]
     if: |
-      always() && !cancelled() && (github.event_name != 'workflow_dispatch || needs.call-reusable-workflow.result == 'success')
+      always() && !cancelled() && (github.event_name != 'workflow_dispatch' || needs.call-reusable-workflow.result == 'success')
     runs-on: ubuntu-latest
     
     steps:
