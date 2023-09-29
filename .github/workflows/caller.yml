@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo
-        run: ${{ DEPLOYMENT_ENVIRONMENT }}
+        run: echo $DEPLOYMENT_ENVIRONMENT
         
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml
