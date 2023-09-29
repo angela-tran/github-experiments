@@ -13,6 +13,12 @@ env:
   DEPLOYMENT_ENVIRONMENT: ${{ github.event_name != 'release' && github.ref_name || github.event.release.prerelease && 'test' || 'prod' }}
 
 jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: ${{ DEPLOYMENT_ENVIRONMENT }}
+        
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml
     if: github.event_name == 'workflow_dispatch'
