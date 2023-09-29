@@ -15,7 +15,7 @@ jobs:
   build:
     needs: [call-reusable-workflow]
     if: |
-      always()
+      always() && !cancelled() && needs.call-reusable-workflow.result == 'success'
     runs-on: ubuntu-latest
     
     steps:
