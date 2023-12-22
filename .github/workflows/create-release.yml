@@ -1,1 +1,19 @@
+on:
+  workflow_dispatch:
+    inputs:
+      prerelease:
+        description: 'prerelease?'
+        required: true
+        type: boolean
+      
 
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+    steps:
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        prerelease: ${{ inputs.prerelease }}
+        generate_release_notes: ${{ inputs.prerelease }}
