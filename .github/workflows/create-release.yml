@@ -6,6 +6,9 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      # https://github.com/softprops/action-gh-release#permissions
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
