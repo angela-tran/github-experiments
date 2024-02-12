@@ -12,4 +12,6 @@ jobs:
           repository: 'cal-itp/littlepay'
 
       - name: Install the littlepay library
-        run: pip install -e .
+        run: |
+          cd $GITHUB_WORKSPACE
+          pip install -e .
