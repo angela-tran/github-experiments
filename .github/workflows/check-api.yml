@@ -13,5 +13,4 @@ jobs:
 
       - name: Install the littlepay library
         run: |
-          cd $GITHUB_WORKSPACE
-          pip install -e .
+          ls
