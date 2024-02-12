@@ -1,0 +1,15 @@
+name: Check API
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: 'cal-itp/littlepay'
+
+      - name: Install the littlepay library
+        run: pip install -e .
