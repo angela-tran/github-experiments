@@ -13,4 +13,5 @@ jobs:
 
       - name: Install the littlepay library
         run: |
-          ls
+          python3 -m pip install --upgrade pip
+          pip install -e .
