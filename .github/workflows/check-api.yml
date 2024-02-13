@@ -6,6 +6,13 @@ on:
 jobs:
   check-api:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - participant: mst
+            env: qa
+          - participant: mst
+            env: prod
     steps:
       - uses: actions/checkout@v3
         with:
@@ -17,4 +24,6 @@ jobs:
           pip install -e .
 
       - name: Run littlepay
-        run: littlepay
+        run: | 
+          echo "littlepay switch env ${{ matrix.env }}"
+          echo "littlepay switch participant ${{ matrix.participant }}"
