@@ -23,7 +23,14 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -e .
 
+      - name: Create config file and set config
+        env:
+          CONFIG: ${{ secrets.config }}
+        run: |
+          echo $CONFIG > config.yaml
+          littlepay config config.yaml         
+
       - name: Run littlepay
         run: | 
-          echo "littlepay switch env ${{ matrix.env }}"
-          echo "littlepay switch participant ${{ matrix.participant }}"
+          littlepay switch env ${{ matrix.env }}
+          littlepay switch participant ${{ matrix.participant }}
