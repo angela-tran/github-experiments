@@ -2,6 +2,8 @@ name: Check API
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * *"
 
 jobs:
   check-api:
@@ -27,7 +29,16 @@ jobs:
           EOM
           littlepay config config.yaml         
 
-      - name: Run littlepay
+      - name: Run littlepay to get access token
         run: | 
           littlepay switch env ${{ matrix.env }}
           littlepay switch participant ${{ matrix.participant }}
+
+      - name: Report failure to Slack
+        if: always()
+        uses: ravsamhq/notify-slack-action@v2
+        with:
+          status: ${{ job.status }}
+          notify_when: "failure"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
