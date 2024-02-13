@@ -13,6 +13,14 @@ jobs:
             env: qa
           - participant: mst
             env: prod
+          - participant: sacrt
+            env: qa
+          - participant: sacrt
+            env: prod
+          - participant: SBMTD
+            env: qa
+          - participant: sbmtd
+            env: prod
     steps:
       - uses: actions/checkout@v3
         with:
