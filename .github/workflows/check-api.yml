@@ -24,10 +24,10 @@ jobs:
           pip install -e .
 
       - name: Create config file and set config
-        env:
-          CONFIG: ${{ secrets.config }}
         run: |
-          echo $CONFIG > config.yaml
+          cat > config.yaml <<- EOM
+          ${{ secrets.config }}
+          EOM
           littlepay config config.yaml         
 
       - name: Run littlepay
