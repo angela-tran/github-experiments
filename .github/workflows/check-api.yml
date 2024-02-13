@@ -17,7 +17,7 @@ jobs:
             env: qa
           - participant: sacrt
             env: prod
-          - participant: SBMTD
+          - participant: sbmtd
             env: qa
           - participant: sbmtd
             env: prod
