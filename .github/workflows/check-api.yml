@@ -8,21 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - participant: mst
-            env: qa
-          - participant: mst
-            env: prod
-          - participant: sacrt
-            env: qa
-          - participant: sacrt
-            env: prod
-          - participant: sbmtd
-            env: qa
-          - participant: sbmtd
-            env: prod
+        participant: [mst, sacrt, sbmtd]
+        env: [qa, prod]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: 'cal-itp/littlepay'
 
