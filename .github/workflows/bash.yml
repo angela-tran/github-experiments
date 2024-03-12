@@ -15,4 +15,5 @@ jobs:
         run: |
           hi="hi"
           test="testing"
-          echo $hi $testing
+          echo $hi $test
+          replaced=${test/test/th}
