@@ -21,6 +21,7 @@ jobs:
       - name: Run a multi-line script
         id: version
         run: |
+          littlepay
           output=$(littlepay -v)
           version=${output/littlepay /}
           version=${version/+/}
