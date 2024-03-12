@@ -9,16 +9,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
+        with:
+          repository: 'cal-itp/littlepay'
+
+      - name: Install the littlepay library
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -e .
       
       - name: Run a multi-line script
         id: version
         run: |
-          output=$(echo "hi")
-          version=${output/hi/bye}
+          output=$(littlepay -v)
+          version=${output/littlepay /}
           echo "PYPI_RELEASE_URL=https://pypi.org/project/calitp-littlepay/$version" >> "$GITHUB_OUTPUT"
 
-      - name: Get color
+      - name: Get URL
         env:
           PYPI_RELEASE_URL: ${{ steps.version.outputs.PYPI_RELEASE_URL }}
         run: echo "$PYPI_RELEASE_URL"
