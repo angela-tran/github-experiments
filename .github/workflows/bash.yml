@@ -13,7 +13,6 @@ jobs:
       
       - name: Run a multi-line script
         run: |
-          hi="hi"
-          test="testing"
-          echo $hi $test
-          replaced=${test/test/th}
+          output=$(echo "hi")
+          version=${output/hi/bye}
+          echo "PYPI_RELEASE_URL=https://pypi.org/project/calitp-littlepay/$version" >> "$GITHUB_OUTPUT"
