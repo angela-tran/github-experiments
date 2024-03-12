@@ -24,7 +24,7 @@ jobs:
           output=$(littlepay -v)
           version=${output/littlepay /}
           version=${version/+/}
-          url="https://pypi.org/project/calitp-littlepay/$version"
+          url=$(echo "https://pypi.org/project/calitp-littlepay/$version" | xargs)
           echo "PYPI_RELEASE_URL=$url" >> "$GITHUB_OUTPUT"
 
       - name: Get URL
